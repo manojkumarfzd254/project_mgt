@@ -1,0 +1,44 @@
+<?php
+  $project = $this->db->get_where('projects',['login_id'=>$this->session->id])->num_rows();
+  $users = $this->Admin_model->all_users()->num_rows();
+?>
+<div class="row">
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="<?=base_url?>static/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <a href="<?=base_url?>Admin/list-projects"><h4 class="font-weight-normal mb-3">All Projects <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                    </h4></a>
+                    <h2 class="mb-5"><?=$project?></h2>
+                    <!-- <h6 class="card-text">Increased by 60%</h6> -->
+                  </div>
+                </div>
+              </div>
+              <?php if($this->session->role == 'admin'){ ?>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="<?=base_url?>static/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">All Users <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                    </h4>
+                    <h2 class="mb-5"><?=$users?></h2>
+                    <!-- <h6 class="card-text">Decreased by 10%</h6> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-success card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="<?=base_url?>static/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <a href="<?=base_url?>Admin/manage-role"><h4 class="font-weight-normal mb-3">Manage Role <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                    </h4></a>
+                    <h2 class="mb-5">Users</h2>
+                    <!-- <h6 class="card-text">Increased by 5%</h6> -->
+                  </div>
+                </div>
+              </div>
+              <?php } ?>
+            </div>
+           
+        
